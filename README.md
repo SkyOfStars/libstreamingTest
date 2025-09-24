@@ -1,0 +1,2 @@
+# libstreamingTest
+使用libstreaming库测试rtsp在两台android手机之间进行视频传输，两台手机连接同一个wifi
