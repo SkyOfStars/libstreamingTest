@@ -48,12 +48,6 @@ class WelcomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
-        val test = Button(this@WelcomeActivity)
-        test.text = "欢迎使用"
-        test.setOnClickListener(){
-
-
-        }
         setContentView(R.layout.activity_welcome)
         findViewById<Button>(R.id.btn_start_rtsp).setOnClickListener {
             //首先两个手机都连接同一个wifi，
@@ -67,11 +61,11 @@ class WelcomeActivity : AppCompatActivity() {
             intent.setClass(this@WelcomeActivity, RtspPlayerActivity::class.java)
             startActivity(intent)
         }
-        
+
         PermissionXUtil.applyPermissions(this, permissions, object : IPermissionListener {
             override fun allGranted() {
                 Log.d(TAG, "allGranted")
-
+    
             }
 
             override fun denied(deniedList: List<String?>?) {
