@@ -51,15 +51,23 @@ class WelcomeActivity : AppCompatActivity() {
         val test = Button(this@WelcomeActivity)
         test.text = "欢迎使用"
         test.setOnClickListener(){
+
+
+        }
+        setContentView(R.layout.activity_welcome)
+        findViewById<Button>(R.id.btn_start_rtsp).setOnClickListener {
             //首先两个手机都连接同一个wifi，
-            //启动RTSP推流到服务器
+            //在一个手机上启动RTSP推流到服务器
             intent.setClass(this@WelcomeActivity, MainActivity::class.java)
             startActivity(intent)
-            // 启动RTSP播放器在另一台Android设备上播放
-            /*intent.setClass(this@WelcomeActivity, RtspPlayerActivity::class.java)
-            startActivity(intent)*/
         }
-        setContentView(test)
+        findViewById<Button>(R.id.btn_play).setOnClickListener {
+            //首先两个手机都连接同一个wifi，
+            // 启动RTSP播放器在另一台Android设备上播放
+            intent.setClass(this@WelcomeActivity, RtspPlayerActivity::class.java)
+            startActivity(intent)
+        }
+        
         PermissionXUtil.applyPermissions(this, permissions, object : IPermissionListener {
             override fun allGranted() {
                 Log.d(TAG, "allGranted")
